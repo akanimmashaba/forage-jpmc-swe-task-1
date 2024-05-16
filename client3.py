@@ -57,10 +57,10 @@ if __name__ == "__main__":
         prices = {}
         for quote in quotes:
             stock, bid_price, ask_price, price = getDataPoint(quote)
-            price[stock] = price
+            prices[stock] = price
             print("Quoted %s at (bid:%s, ask:%s, price:%s)" % (stock, bid_price, ask_price, price))
         
         try:
-            print("Ratio %s" % getRatio(price["ABC"], price["DEF"]))
+            print("Ratio %s" % getRatio(prices["ABC"], prices["DEF"]))
         except ValueError as e:
             print(f"Error: {e}")
