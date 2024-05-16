@@ -43,8 +43,7 @@ def getRatio(price_a, price_b):
     """ Get ratio of price_a and price_b """
     """ ------------- Update this function ------------- """
     if (price_b == 0):
-        return Exception
-
+        raise ValueError("Division by zero")
     return price_a/price_b
 
 
@@ -60,5 +59,8 @@ if __name__ == "__main__":
             stock, bid_price, ask_price, price = getDataPoint(quote)
             price[stock] = price
             print("Quoted %s at (bid:%s, ask:%s, price:%s)" % (stock, bid_price, ask_price, price))
-
-        print("Ratio %s" % getRatio(price["ABC"], price["DEF"]))
+        
+        try:
+            print("Ratio %s" % getRatio(price["ABC"], price["DEF"]))
+        except ValueError as e:
+            print(f"Error: {e}")
